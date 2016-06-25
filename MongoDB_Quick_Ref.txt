@@ -1,0 +1,12 @@
+// find a document
+db.posts.find({"_id":ObjectId("5705aab761f276084243b732")}).pretty()
+
+// insert a new field to the document
+db.posts.update({ "_id": ObjectId("5705aab761f276084243b732") },{$set : {"utils_incl":true}})
+
+// bulk update
+db.posts.bulkWrite([{ updateMany:{"filter" : {name:"Bobby"}, "update" : {$set : {"groupid":142679255268}}}}])
+
+// add record from console
+db.groups.insert({"groupid": 142679255268, "groupname": "UW/WLU 4 Month Subletting", "city_name" : "Waterloo", "added_at": new Date()})
+db.cities.insert({"city_name": "Waterloo", "province": "ON", "country" : "Canada", "added_at": new Date()})
