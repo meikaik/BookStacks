@@ -1,19 +1,16 @@
 /*main css*/
 body{
-	background-color:#424242;
+	background-color:rgb(223,228,238);
 }
 .card{
-	background-color: rgba(0,0,0,0);
-	border-style: solid;
-	border-width: 2px;
-	border-color:#FF3D00;
+	background-color: rgb(255,255,255);
+	box:shadow
 }
 .item{
 	background-color: rgba(0,0,0,0);	
-	color: #FAFAFA;
 }
 .item a{
-	color: #FAFAFA;
+	color: rgb(223,228,238);
 	font-weight: bold;
 }
 .btn .btn-block{
@@ -24,24 +21,25 @@ body{
 	box-shadow:10px 10px 15px #888888;
 }
 .btn-primary{
-	background-color: rgba(0, 0, 0, 0);
-	color: #FF3D00;
+	background-color: rgb(255, 138, 128);
+	color: #FAFAFA;
 	border-color: #FF3D00;
+	border: 0px 0px 3px 0px;
 }
 }
 .btn-primary:active{
-	background-color: #FF3D00;
+	background-color: #FF8A80;
 }
 .btn-primary:hover{
-	background-color: #FF3D00;
+	background-color: #FF8A80;
 }
-.form-group .qbar{
+.qbar{
 	border-style: solid;
     border-width: 0px 0px 0px 0px;
    	opacity: 1.0;
    	border-color: 
 }
-.form-group .input:focus{
+.qbar.input:focus{
 	opacity: 0.9;
 	border-color: #E57373;
 	border-width: 0px 0px 3px 0px;

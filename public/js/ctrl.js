@@ -28,7 +28,7 @@ Comuet.controller('mainCtrl',
   $scope.get_recent_posts = function(){
     var groupid = 2265647819;
     FB.api(
-        "/"+groupid+"/feed?limit=20",
+        "/"+groupid+"/feed?limit=100",
         function (response) {
           if (response.data && !response.error) {
             //$scope.posts = response.data; 
@@ -66,8 +66,5 @@ Comuet.controller('mainCtrl',
         console.log(err);
       });
   };
-$scope.filterItem = function(item) {
-    return (!$scope.hideSlow || item.speed > X) &&
-       (!$scope.showType || item.type === Y);
-}
+
 }])
