@@ -25,10 +25,11 @@ if(!fbconfig.facebook.appId || !fbconfig.facebook.appSecret) {
 
 // import mongoose schemas
 require('./models/Post-Model');                   // import mongoose model 'Rent' for rental posts
+require('./models/Book-Model');
 require('./models/User-Model');
 
 // establish a connection to mongo and display results message
-mongoose.connect('mongodb://localhost:27017/carpools');   // mongoose connect to location where mongo is running, and the db to use
+mongoose.connect('mongodb://localhost:27017/library');   // mongoose connect to location where mongo is running, and the db to use
 var db = mongoose.connection;                         
 db.on('error', console.error.bind(console, 'Error connecting to MongoDB via Mongoose'));
 db.once('open', function(){

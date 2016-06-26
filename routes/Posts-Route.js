@@ -62,7 +62,7 @@ router.post('/get_posts', function(req, res, next){
 	fb_courier.logUserInDB(profile, accessToken);
 
 	// return to client the last 150 posts in db
-	Post.find({groupid: groupid}, null, {sort: {updated_time: -1}}, function(err, posts){
+	Post.find({}, null, function(err, posts){
 		if(err){return next(err);}
 		res.json(posts);
 	}).limit(150);

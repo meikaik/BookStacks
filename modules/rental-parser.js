@@ -22,13 +22,9 @@ exports.parseAndSavePost = function(post) {
    	var self = this;
    	// syncronously execute in this order
 	async.waterfall([
-	  	async.apply(parseMessage, post),	// async.apply(fn, param) to implicitly pass params to first function
-	  	extract_user,
-	  	//check_post_exists,
+	  	async.apply(extract_user, post),	// async.apply(fn, param) to implicitly pass params to first function
 	  	extract_profile_link,
-	  	extract_profile_image,
-	  	parseGPS_to,
-	  	parseGPS_from
+	  	extract_profile_image
 	], function(err, refined_post){
 		if(err){console.log(err)};
 
@@ -40,7 +36,7 @@ exports.parseAndSavePost = function(post) {
 		refined_post.active = true;
 		//console.log(refined_post);
 		// save to db only if we successfully extracted an address, coords, userurl and price 
-		if(refined_post.to_address && refined_post.to_coords && refined_post.from_address && refined_post.from_coords && refined_post.userurl){
+		if(refined_post.content && refined_post.userurl){
 			var post = new Post(refined_post);
 			post.save(function(err, post){
 				if(err){console.log(err)}
@@ -53,36 +49,6 @@ exports.parseAndSavePost = function(post) {
 		}
 	});
 };
-
-// parse message using REGEX
-parseMessage = function(post, callback){	// implicit params async.apply(fn, param) --> function(param, callback){}
-
-	// if the post has a message
-	if(post.message){
-		// set the postid and created_at time
-		var postid = post.id;
-		var updated_time = post.updated_time;
-		var message = post.message;
-
-		// create the post object that will be saved to db
-		var data = {
-			to_address: post.to_address,
-			from_address: post.from_address,
-			leave_time: post.leave_time,
-			price: post.price,
-			phone: post.phone,
-			message: post.message,
-			id: post.id,
-			posturl: "http://facebook.com/" + post.id,
-			updated_time: updated_time,
-			groupid: post.groupid
-		};
-		callback(null, data);
-	}else{
-		// throw error if no message content
-    	callback("No message content");					// implicit params callback(null, data) --> function(data, callback){}
-	}
-}
 
 // extract the user id and name
 extract_user = function(data, callback){	// implicit params callback(null, data) --> function(data, callback){}

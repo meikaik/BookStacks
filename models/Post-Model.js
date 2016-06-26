@@ -5,22 +5,13 @@ var Schema = mongoose.Schema;
 // Create the Rental post Schema
 var PostSchema = new mongoose.Schema({
 	id: String,
+	content: String,
 	posturl: String,
-	to_address: String,
-	from_address: String,
-	to_coords: [Number],
-	from_coords: [Number],
-	leave_time: Date,
-	price: Number,
-	phone: String,
-	message: String,
-	updated_time: Date,
 	userid: String,
 	username: String,
 	userurl: String,
 	userpic: String,
 	extracted_at: Date,
-	groupid: Number,
 	active: Boolean
 });
 
