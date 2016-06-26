@@ -42,9 +42,13 @@
     <div id='background'>
 
         <div id='signInBg' ng-if='!signedIn'>
-            <button id='signInButton' class='btn btn-block' ng-click='login()' style='height:50vh; margin-top:30vh; font-size: 4.3rem; color:rgb(55,99,151);'>
-                <img src='https://www.facebookbrand.com/img/fb-art.jpg' style='width:100px; height:auto;' />
-                Login with Facebook
+            <button id='signInButton' class='btn btn-block' ng-mouseenter='hover=true' ng-mouseleave='hover=false' ng-click='login()'>
+                <div ng-if='hover'>
+                    <img src='https://www.facebookbrand.com/img/fb-art.jpg' style='width:100px; height:auto;' />
+                    Login with Facebook
+                </div>
+
+                <img ng-if='!hover' src='http://i.imgur.com/99AhDXW.png?1' style='width:250px; height:auto;' />
             </button>
         </div>
 
@@ -127,7 +131,7 @@
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
           // development appID
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=255447711493717";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=299804590357995";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script>
