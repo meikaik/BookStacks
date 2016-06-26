@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Paste your schedule below!</h3>
+
+<textarea name="name" rows="8" cols="40" id="myText"></textarea>
+<br/>
+<button onclick="myFunction()">return classes</button>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var haystack = document.getElementById("myText").value;
+  // replaces all values except for alphabet letters
+//  haystack = haystack.replace(/\W/g, ' ');
+  //array = possible classes to search the input against
+  var array = ["MATH 135", "MATH 128", "CS 136", "ECON 102"];
+  var newarray = [];
+  //returns new array with classes found including null values
+  for (i=0; i < array.length; i++){
+    if (haystack.indexOf(array[0]) >= 1){
+      newarray[i] = array[i];
+    }
+    else newarray[i] = null;
+  }
+    document.getElementById("demo").innerHTML = newarray[3];
+}
+</script>
+
+
+</body>
+</html>
