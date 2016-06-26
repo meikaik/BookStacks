@@ -82,5 +82,20 @@ Bookstacks.controller('mainCtrl',
     var win = window.open(post.posturl, '_blank');
     win.focus();
   }
-
 }])
+.filter('schoolFilter', function(){
+  return function(schedule){
+
+  var array = ['AFM 131', 'ARBUS 101', 'CHEM 120', 'ECON 102'];
+  var courses = []
+  for (i=0; i < array.length; i++){
+    if (String(schedule).indexOf(array[i]) >= 1){
+      courses[i] = array[i];
+    }
+    else{
+
+    }
+  }
+  return courses
+}});
+

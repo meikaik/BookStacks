@@ -71,3 +71,15 @@ body{
 	height:100vh; 
 	background-size: cover;
 }
+
+div.btn .btn-warning{
+	width: 100%; 
+	background: rgba(0,0,0, 0.3);
+	padding-left:10px;
+	margin-left: 10px;
+	border-color: rgba(0,0,0,0.3);
+}
+textarea.fourm{
+	background-color: rgba(255,255,255,0.5);
+}
+
