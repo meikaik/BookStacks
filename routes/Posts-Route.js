@@ -50,7 +50,7 @@ router.post('/new_posts', function(req, res, next){
 
 // ======================================================================================================
 
-// return last 100 posts
+// return last 150 posts
 router.post('/get_posts', function(req, res, next){
 	// console.log(req.body);
 	var profile = req.body.profile;

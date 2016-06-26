@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 // Create the Rental post Schema
 var PostSchema = new mongoose.Schema({
 	id: String,
-	content: String,
+	content: {type: String, index: true},
 	posturl: String,
 	userid: String,
 	username: String,
@@ -21,10 +21,6 @@ PostSchema.pre('save', function(next){
 	this.extracted_at = currentDate;
 	next();
 });
-
-// Indexes this schema in 2dsphere format (critical for running proximity searches)
-PostSchema.index({to_coords: '2dsphere'});
-PostSchema.index({from_coords: '2dsphere'});
 
 var Post = mongoose.model('Post', PostSchema);
 
