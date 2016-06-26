@@ -3,6 +3,9 @@ Comuet.controller('mainCtrl',
   ['$scope', 'LoginFactory', 'PostStorage', 'ServerPostsFactory', '$window', 
   function($scope, LoginFactory, PostStorage, ServerPostsFactory, $window){
 
+    // facebook groupid
+  $scope.groupid = 2265647819;
+
   // Initial variables
   $scope.signedIn = false;
 
@@ -19,8 +22,11 @@ Comuet.controller('mainCtrl',
           // Get posts from facebook
           $scope.get_recent_posts();
 
+          // And get db posts
+          $scope.get_db_posts($scope.groupid);
+
             $(document).ready(function() {  
-                $("#list").niceScroll({
+                $("#RHS").niceScroll({
                       cursorwidth:"20px",
                       zindex: 99
                     });
@@ -33,16 +39,14 @@ Comuet.controller('mainCtrl',
 
   // Get posts from Facebook
   $scope.get_recent_posts = function(){
-    var groupid = 2265647819;
     FB.api(
-        "/"+groupid+"/feed?limit=100",
+        "/"+$scope.groupid+"/feed?limit=20",
         function (response) {
           if (response.data && !response.error) {
             //$scope.posts = response.data; 
             //$scope.$apply(function () {});
 
             $scope.flush_olds_and_send_news(response.data, groupid);
-            $scope.get_db_posts(groupid);
           }else{
             console.log(response.error);
           }
@@ -67,7 +71,7 @@ Comuet.controller('mainCtrl',
     // get the posts from server via a service
     ServerPostsFactory.get_server_posts(user_profile)
       .then(function(data){
-        //console.log(data.data);
+        console.log(data.data);
         $scope.posts = data.data;       // show those posts retrieved from server
       }, function(err){
         console.log(err);

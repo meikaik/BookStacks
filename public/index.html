@@ -5,10 +5,6 @@
     <title>Comuet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js">
-    </script>
-
     <!-- Bootstrap -->
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet'>
     <script href='libs/bootstrap.min.js'></script>
@@ -24,6 +20,7 @@
     <!-- Angular Source -->
     <script src="libs/angular.min.js"></script>
     <script src='libs/angular-ui-router.js'></script>
+    <script src='libs/angular-nicescroll.js'></script>
 
     <!-- Root JS -->
     <script src="js/app.js"></script>
@@ -54,7 +51,8 @@
         <div ng-if='signedIn'>
 
             <!-- LEFT SIDE -->
-            <div class='col-md-6' style='height:100vh;padding:10px;'>
+            <!-- Uncomment the below div#LHS to enable LHS/RHS view -->
+            <!-- <div id='LHS' class='col-md-6' style='height:100vh;padding:10px;'>
                 <div class="search">
                     <div style='height:80%; width:100%;'>
                         <label class='sr-only'>What program are you in?</label>
@@ -67,22 +65,23 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>  -->
                      
 
-            <!-- RIGHT SIDE -->                             
-            <div id='list' class='col-md-6' style='height:100vh; padding:0; overflow:scroll; padding:10px;'>
+            <!-- RIGHT SIDE -->    
+            <!-- Remove 'col-md-offset-3' from div#RHS when splitting into LHS/RHS -->                         
+            <div id='RHS' class='col-md-6 col-md-offset-3' style='height:100vh; padding:0; padding:10px;'>
 
                 <!-- SEARCH BAR -->
-                <div class="input-group input-group-lg" style='position:fixed; height: 50px; z-index: 20;'>
+                <div class="input-group input-group-lg" style='height: 50px; z-index: 20;'>
                     <span class="input-group-addon" id="sizing-addon1">
                         <span class='glyphicon glyphicon-search'></span>
                     </span>
-                    <input type="text" class="form-control" ng-model="search" placeholder="Live Search" aria-describedby="sizing-addon1" style='width:40vw;'>
+                    <input type="text" class="form-control" ng-model="search" placeholder="Live Textbook Search" aria-describedby="sizing-addon1" style='width:100%;'>
                 </div>
 
-                <div class='col-md-12' style='margin-top: 70px;'>
-                    <!-- POST CARD -->
+                <div class='col-md-12' ng-nicescroll nice-option='{cursorwidth: "15px"}' style='margin-top: 30px; height:85vh; overflow:scroll;'>
+                     <!-- POST CARD -->
                     <div class="card" ng-repeat="post in posts |  fuzzyBy: 'content':search:false"          style='background-color:rgba(255,255,255,0.8);''>
                       <div class="item item-text-wrap">
 

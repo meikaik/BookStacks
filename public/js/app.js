@@ -1,1 +1,1 @@
-var Comuet = angular.module('Comuet', ['angular.filter']);
+var Comuet = angular.module('Comuet', ['angular.filter', 'angular-nicescroll']);
