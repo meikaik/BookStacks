@@ -1,5 +1,5 @@
 // controller
-Comuet.controller('mainCtrl', 
+Bookstacks.controller('mainCtrl', 
   ['$scope', 'LoginFactory', 'PostStorage', 'ServerPostsFactory', '$window', 
   function($scope, LoginFactory, PostStorage, ServerPostsFactory, $window){
 

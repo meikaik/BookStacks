@@ -1,4 +1,4 @@
-Comuet.factory('LoginFactory', ['$q', function($q){
+Bookstacks.factory('LoginFactory', ['$q', function($q){
 
   return {
 

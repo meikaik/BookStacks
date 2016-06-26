@@ -1,7 +1,7 @@
 // for communication with server backend
 // and clientside pre-processing before interacting with server backend
 
-Comuet.factory('ServerPostsFactory', ['$http', '$q', '$timeout', 'ParserFactory', function($http, $q, $timeout, ParserFactory){
+Bookstacks.factory('ServerPostsFactory', ['$http', '$q', '$timeout', 'ParserFactory', function($http, $q, $timeout, ParserFactory){
 
 	// to hold all new posts
 	var newPosts = [];

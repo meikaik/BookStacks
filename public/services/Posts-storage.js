@@ -1,4 +1,4 @@
-Comuet.factory('PostStorage', ['$q', function($q){
+Bookstacks.factory('PostStorage', ['$q', function($q){
 
 	var posts;
 	var tempPosts;

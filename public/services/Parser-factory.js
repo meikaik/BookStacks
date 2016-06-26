@@ -1,7 +1,7 @@
 // for communication with server backend
 // and clientside pre-processing before interacting with server backend
 
-Comuet.factory('ParserFactory', ['$http', '$q', '$timeout', 
+Bookstacks.factory('ParserFactory', ['$http', '$q', '$timeout', 
 	function($http, $q, $timeout){
 
 	var user_profile;

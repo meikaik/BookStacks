@@ -1,1 +1,1 @@
-var Comuet = angular.module('Comuet', ['angular.filter', 'angular-nicescroll']);
+var Bookstacks = angular.module('Bookstacks', ['angular.filter', 'angular-nicescroll']);
