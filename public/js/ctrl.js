@@ -66,5 +66,8 @@ Comuet.controller('mainCtrl',
         console.log(err);
       });
   };
-
-}]);
+$scope.filterItem = function(item) {
+    return (!$scope.hideSlow || item.speed > X) &&
+       (!$scope.showType || item.type === Y);
+}
+}])

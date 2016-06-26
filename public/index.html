@@ -36,7 +36,7 @@
     <script src="services/ServerPosts-factory.js"></script>
     <script src="services/Posts-storage.js"></script>
     <script src="services/Parser-factory.js"></script>
-
+    <link rel="stylesheet" href="main.css">
 
 </head>
 <body ng-app='Comuet' ng-controller='mainCtrl'>
@@ -45,37 +45,42 @@
 
             <div class='col-md-6' style='height:100vh;padding:0;'>
                 <button class='btn btn-warning' ng-if='!signedIn' ng-click='login()' style='height:100%; width:100%;'>Login with Facebook</button>
-                <div ng-if='signedIn'>
-
-                    <div style='height:20%; width:100%;'>
-                            <label>Live Search</label>
-                          <input ng-model="query" type="text"
-                            placeholder="Filter by">
-                        {{query}}
-                    </div>
-
+                <div class="col-md-8 col-md-offset-2">
+                    
+                <div class="search" ng-if='signedIn'>
+                        
                     <!-- http://www.w3schools.com/angular/tryit.asp?filename=try_ng_filters_input -->
                     <br/><br/><br/><br/><br/>
                     <div style='height:80%; width:100%;'>
-                        <label>What program are you in?</label>
-                        <div class="form-group" style='margin-top: 15px;'>
-                            <input class="form-control" type='text' ng-model='inquiry.phone' placeholder="" style='border-radius: 5px 5px 0px 0px;'>
+                        <label class='sr-only'>What program are you in?</label>
+                        <div class="form-group qbar" style='margin-top: 15px;'>
+                            <input placeholder="Current Program" class="form-control qbar" type='text' ng-model='inquiry.phone' placeholder="" style='border-radius: 5px 5px 0px 0px;'>
                         </div>
-                        <label>What year are you in?</label>
+                        <label class="sr-only">What year are you in?</label>
                         <div class="form-group" style='margin-top: 15px;'>
-                            <input class="form-control" type='email' ng-model='inquiry.reply_email' placeholder="" style='border-radius: 0px 0px 5px 5px;' required>
+                            <input placeholder="Current Year?" class="form-control qbar" type='email' ng-model='inquiry.reply_email' placeholder="" style='border-radius: 0px 0px 5px 5px;' required>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>  
+
+                    </div>
+                    <div style='height:20%; width:100%;'>
+                            <label>Live Search</label>
+                          <input ng-model="search" type="text"
+                            placeholder="Filter by">
+                        {{search}}
+                    </div>                                
             <div class='col-md-6' style='height:100vh; padding:0; overflow:scroll;'>
+            <div>
+             </div>
                 <!-- POST CARD -->
-                <div class="card" ng-repeat="post in posts | filter: query">
+                <div class="card" ng-repeat="post in posts |  fuzzyBy: 'content':search:false">
                   <div class="item item-text-wrap">
 
                     <!-- PROFILE PICTURE -->
                     <a href='{{post.userurl}}' target='_blank'>
-                        <img src="{{post.userpic}}" class="img-circle col-md-3" width="100%;" height="100%" style='display:inline-block; max-height: 7rem; max-width: 7rem;'>
+                        <img src="{{post.userpic}}" class="pic img-circle col-md-3" width="100%;" height="100%" style='display:inline-block; max-height: 7rem; max-width: 7rem;'>
                     </a>
 
                     <!-- POSTED BY -->
@@ -91,13 +96,14 @@
                         {{post.content}}
                     </div>
                     <a href='{{post.posturl}}' target='_blank'>
-                        <button class='btn btn-block'>Message</button>
+                        <button class='btn btn-block btn-primary'>Message</button>
                     </a>
                   </div>
                 </div>
             </div>
         </div>
-
+        <!-- angular-filters  -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
         <!-- Facebook -->
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -105,11 +111,10 @@
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
           // development appID
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=299804590357995";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1579158369051430";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script>
-        
 </body>
 
 </html>

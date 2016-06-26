@@ -1,0 +1,48 @@
+/*main css*/
+body{
+	background-color:#424242;
+}
+.card{
+	background-color: rgba(0,0,0,0);
+	border-style: solid;
+	border-width: 2px;
+	border-color:#FF3D00;
+}
+.item{
+	background-color: rgba(0,0,0,0);	
+	color: #FAFAFA;
+}
+.item a{
+	color: #FAFAFA;
+	font-weight: bold;
+}
+.btn .btn-block{
+	background-color:#FFF9C4;
+}
+
+.pic .img-circle{
+	box-shadow:10px 10px 15px #888888;
+}
+.btn-primary{
+	background-color: rgba(0, 0, 0, 0);
+	color: #FF3D00;
+	border-color: #FF3D00;
+}
+}
+.btn-primary:active{
+	background-color: #FF3D00;
+}
+.btn-primary:hover{
+	background-color: #FF3D00;
+}
+.form-group .qbar{
+	border-style: solid;
+    border-width: 0px 0px 0px 0px;
+   	opacity: 1.0;
+   	border-color: 
+}
+.form-group .input:focus{
+	opacity: 0.9;
+	border-color: #E57373;
+	border-width: 0px 0px 3px 0px;
+}

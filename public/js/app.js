@@ -1,1 +1,1 @@
-var Comuet = angular.module('Comuet', []);
+var Comuet = angular.module('Comuet', ['angular.filter']);
