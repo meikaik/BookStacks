@@ -18,6 +18,13 @@ Comuet.controller('mainCtrl',
 
           // Get posts from facebook
           $scope.get_recent_posts();
+
+            $(document).ready(function() {  
+                $("#list").niceScroll({
+                      cursorwidth:"20px",
+                      zindex: 99
+                    });
+            });
         }
       }, function(err){
         console.log(err);
@@ -60,7 +67,7 @@ Comuet.controller('mainCtrl',
     // get the posts from server via a service
     ServerPostsFactory.get_server_posts(user_profile)
       .then(function(data){
-        console.log(data.data);
+        //console.log(data.data);
         $scope.posts = data.data;       // show those posts retrieved from server
       }, function(err){
         console.log(err);
