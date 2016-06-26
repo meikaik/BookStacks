@@ -44,3 +44,26 @@ body{
 	border-color: #E57373;
 	border-width: 0px 0px 3px 0px;
 }
+
+#signInBg {
+	background-color:rgba(0,0,0,0);
+	width:100vw; 
+	height:100vh; 
+	padding-left:20vw; 
+	padding-right: 20vw; 
+	padding-bottom: 20vh; 
+	position:absolute;
+}
+
+#signInButton {
+	background-color: rgba(252,252,255,0.8);
+	border: 5px solid rgba(93,128,191,0.3);
+	border-radius: 10px;
+}
+
+#background {
+	background-image: url("http://3.bp.blogspot.com/-YbsM3j2lU1w/UhqIUlhT-aI/AAAAAAAABD0/FsKRgemghb8/s1600/4802-4806.jpg");
+	width:100vw; 
+	height:100vh; 
+	background-size: cover;
+}

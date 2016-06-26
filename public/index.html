@@ -42,16 +42,20 @@
 
 <body ng-app='Comuet' ng-controller='mainCtrl'>
 
-        <div>
+    <div id='background'>
 
-            <div class='col-md-6' style='height:100vh;padding:0;'>
-                <button class='btn btn-warning' ng-if='!signedIn' ng-click='login()' style='height:100%; width:100%;'>Login with Facebook</button>
-                <div class="col-md-8 col-md-offset-2">
-                    
-                <div class="search" ng-if='signedIn'>
-                        
-                    <!-- http://www.w3schools.com/angular/tryit.asp?filename=try_ng_filters_input -->
-                    <br/><br/><br/><br/><br/>
+        <div id='signInBg' ng-if='!signedIn'>
+            <button id='signInButton' class='btn btn-block' ng-click='login()' style='height:50vh; margin-top:30vh; font-size: 4.3rem; color:rgb(55,99,151);'>
+                <img src='https://www.facebookbrand.com/img/fb-art.jpg' style='width:100px; height:auto;' />
+                Login with Facebook
+            </button>
+        </div>
+
+        <div ng-if='signedIn'>
+
+            <!-- LEFT SIDE -->
+            <div class='col-md-6' style='height:100vh;padding:10px;'>
+                <div class="search">
                     <div style='height:80%; width:100%;'>
                         <label class='sr-only'>What program are you in?</label>
                         <div class="form-group qbar" style='margin-top: 15px;'>
@@ -63,46 +67,57 @@
                         </div>
                     </div>
                 </div>
-                </div>  
+            </div>  
+                     
 
+            <!-- RIGHT SIDE -->                             
+            <div class='col-md-6' style='height:100vh; padding:0; overflow:scroll; padding:10px;'>
+
+                <!-- SEARCH BAR -->
+                <div class="input-group input-group-lg" style='position:fixed; height: 50px;'>
+                    <span class="input-group-addon" id="sizing-addon1">
+                        <span class='glyphicon glyphicon-search'></span>
+                    </span>
+                    <input type="text" class="form-control" ng-model="search" placeholder="Live Search" aria-describedby="sizing-addon1" style='width:90%;'>
+                </div>
+
+                <div class='col-md-12' style='margin-top: 100px;'>
+                    <!-- POST CARD -->
+                    <div class="card" ng-repeat="post in posts |  fuzzyBy: 'content':search:false">
+                      <div class="item item-text-wrap">
+
+                        <!-- PROFILE SIDE -->
+                        <div class='col-md-3' style='padding-top: 20px; padding-bottom: 20px;'>
+                            <!-- PROFILE PICTURE -->
+                            <a href='{{post.userurl}}' target='_blank'>
+                                <img src="{{post.userpic}}" class="pic img-circle" width="100%;" height="100%" style='display:inline-block; max-height: 7rem; max-width: 7rem;'>
+                            </a>
+                            <br/>
+                            <!-- POSTED BY -->
+                            <p style='display:inline-block; min-height:15%; font-size:0.9rem; text-align:center; margin-top:10px;'>
+                                <a href='{{post.userurl}}' target='_blank' style='color:white;'>{{post.username}}</a>
+                            </p>
+                        </div>
+
+                        <!-- DETAILS SIDE -->
+                        <div class='col-md-7'>
+                            <!-- CONTENT -->
+                            <div class='col-md-12' style='text-align:center; padding-bottom: 15px; padding-top: 15px;'>
+                                {{post.content}}
+                            </div>
+                        </div>
+
+                        <div class='col-md-2' ng-click='openUrl(post)' style='background-color:rgba(227,134,94,1);'>
+                            <span class='glyphicon glyphicon-comment' style='margin-top:40%; font-size:3rem; color:rgba();'></span>
+                        </div>
+                      </div>
                     </div>
-                    <div style='height:20%; width:100%;'>
-                            <label>Live Search</label>
-                          <input ng-model="search" type="text"
-                            placeholder="Filter by">
-                        {{search}}
-                    </div>                                
-            <div class='col-md-6' style='height:100vh; padding:0; overflow:scroll;'>
-            <div>
-             </div>
-                <!-- POST CARD -->
-                <div class="card" ng-repeat="post in posts |  fuzzyBy: 'content':search:false">
-                  <div class="item item-text-wrap">
-
-                    <!-- PROFILE PICTURE -->
-                    <a href='{{post.userurl}}' target='_blank'>
-                        <img src="{{post.userpic}}" class="pic img-circle col-md-3" width="100%;" height="100%" style='display:inline-block; max-height: 7rem; max-width: 7rem;'>
-                    </a>
-
-                    <!-- POSTED BY -->
-                    <p class='col-md-9' style='display:inline-block; min-height:15%; font-size:0.9rem;'>
-                        Posted by <a href='{{post.userurl}}' target='_blank'>{{post.username}}</a>
-                    </p>
-
-                    <!-- SPACING -->
-                    <div class='col-md-9' style='min-height: 15%;'></div>
-
-                    <!-- CONTENT -->
-                    <div class='col-md-12' style='text-align:center; padding-bottom: 15px; padding-top: 15px;'>
-                        {{post.content}}
-                    </div>
-                    <a href='{{post.posturl}}' target='_blank'>
-                        <button class='btn btn-block btn-primary'>Message</button>
-                    </a>
-                  </div>
                 </div>
             </div>
         </div>
+
+    </div>
+
         <!-- angular-filters  -->
          <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
         <!-- Facebook -->
@@ -112,7 +127,7 @@
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
           // development appID
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1579158369051430";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=299804590357995";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script>

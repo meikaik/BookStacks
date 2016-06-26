@@ -67,4 +67,9 @@ Comuet.controller('mainCtrl',
       });
   };
 
+  $scope.openUrl = function(post){
+    var win = window.open(post.posturl, '_blank');
+    win.focus();
+  }
+
 }])
