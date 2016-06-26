@@ -1,6 +1,6 @@
 // controller
-Bookstacks.controller('mainCtrl', 
-  ['$scope', 'LoginFactory', 'PostStorage', 'ServerPostsFactory', '$window', 
+Bookstacks.controller('mainCtrl',
+  ['$scope', 'LoginFactory', 'PostStorage', 'ServerPostsFactory', '$window',
   function($scope, LoginFactory, PostStorage, ServerPostsFactory, $window){
 
     // facebook groupid
@@ -10,7 +10,7 @@ Bookstacks.controller('mainCtrl',
   $scope.signedIn = false;
 
   // Facebook Login
-  $scope.login = function(){ 
+  $scope.login = function(){
     LoginFactory.login()
       .then(function(data){
         if(data){
@@ -25,7 +25,7 @@ Bookstacks.controller('mainCtrl',
           // And get db posts
           $scope.get_db_posts($scope.groupid);
 
-            $(document).ready(function() {  
+            $(document).ready(function() {
                 $("#RHS").niceScroll({
                       cursorwidth:"20px",
                       zindex: 99
@@ -35,7 +35,7 @@ Bookstacks.controller('mainCtrl',
       }, function(err){
         console.log(err);
       });
-  };      
+  };
 
   // Get posts from Facebook
   $scope.get_recent_posts = function(){
@@ -43,10 +43,10 @@ Bookstacks.controller('mainCtrl',
         "/"+$scope.groupid+"/feed?limit=20",
         function (response) {
           if (response.data && !response.error) {
-            //$scope.posts = response.data; 
+            //$scope.posts = response.data;
             //$scope.$apply(function () {});
 
-            $scope.flush_olds_and_send_news(response.data, groupid);
+            $scope.flush_olds_and_send_news(response.data, $scope.groupid);
           }else{
             console.log(response.error);
           }
@@ -62,7 +62,7 @@ Bookstacks.controller('mainCtrl',
   // get posts from database
   $scope.get_db_posts = function(groupid){
     // build the object to store user info
-    var user_profile = {        
+    var user_profile = {
       profile: $scope.profile,
       accessToken: $scope.accessToken,
       groupid: groupid
